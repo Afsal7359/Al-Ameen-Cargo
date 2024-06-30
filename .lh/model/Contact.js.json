@@ -1,0 +1,50 @@
+{
+    "sourceFile": "model/Contact.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1719736464575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1719736469633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n const mongoose = require('mongoose');\r\n \r\n-const BlogSchema = new mongoose.Schema({\r\n+const Contact = new mongoose.Schema({\r\n     name:{\r\n         type:String,\r\n         required:true\r\n     },\r\n"
+                },
+                {
+                    "date": 1719736477807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const ContactSchema = new mongoose.Schema({\r\n+    name:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    description:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    image:{\r\n+        type:String,\r\n+        required:true\r\n+    }\r\n+})\r\n+const Blog = mongoose.model('Blog',ContactSchema);\r\n+module.exports = Blog;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1719736487148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,18 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const ContactSchema = new mongoose.Schema({\r\n+    name:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    description:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    image:{\r\n+        type:String,\r\n+        required:true\r\n+    }\r\n+})\r\n+const Contact = mongoose.model('Contact',ContactSchema);\r\n+module.exports = Blog;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1719736494496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,10 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const ContactSchema = new mongoose.Schema({\r\n+    name:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+})\r\n+const Contact = mongoose.model('Contact',ContactSchema);\r\n+module.exports = Contact;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1719736502084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,61 +4,8 @@\n     name:{\r\n         type:String,\r\n         required:true\r\n     },\r\n+    emasi\r\n })\r\n const Contact = mongoose.model('Contact',ContactSchema);\r\n-module.exports = Contact;\n-const mongoose = require('mongoose');\r\n-\r\n-const ContactSchema = new mongoose.Schema({\r\n-    name:{\r\n-        type:String,\r\n-        required:true\r\n-    },\r\n-    description:{\r\n-        type:String,\r\n-        required:true\r\n-    },\r\n-    image:{\r\n-        type:String,\r\n-        required:true\r\n-    }\r\n-})\r\n-const Contact = mongoose.model('Contact',ContactSchema);\r\n-module.exports = Blog;\n-const mongoose = require('mongoose');\r\n-\r\n-const ContactSchema = new mongoose.Schema({\r\n-    name:{\r\n-        type:String,\r\n-        required:true\r\n-    },\r\n-    description:{\r\n-        type:String,\r\n-        required:true\r\n-    },\r\n-    image:{\r\n-        type:String,\r\n-        required:true\r\n-    }\r\n-})\r\n-const Blog = mongoose.model('Blog',ContactSchema);\r\n-module.exports = Blog;\n-const mongoose = require('mongoose');\r\n-\r\n-const Contact = new mongoose.Schema({\r\n-    name:{\r\n-        type:String,\r\n-        required:true\r\n-    },\r\n-    description:{\r\n-        type:String,\r\n-        required:true\r\n-    },\r\n-    image:{\r\n-        type:String,\r\n-        required:true\r\n-    }\r\n-})\r\n-const Blog = mongoose.model('Blog',BlogSchema);\r\n\\ No newline at end of file\n-module.exports = Blog;\n+module.exports = Contact;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1719736508179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const ContactSchema = new mongoose.Schema({\r\n+    name:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    email:{\r\n+        \r\n+    }\r\n+})\r\n+const Contact = mongoose.model('Contact',ContactSchema);\r\n+module.exports = Contact;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1719736513839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n     },\r\n     \r\n })\r\n const Contact = mongoose.model('Contact',ContactSchema);\r\n-module.exports = C\n\\ No newline at end of file\n+module.exports = Contact;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1719736526379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const ContactSchema = new mongoose.Schema({\r\n+    name:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    email:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    subject:{\r\n+        type:String,\r\n+        required:true\r\n+    },\r\n+    \r\n+})\r\n+const Contact = mongoose.model('Contact',ContactSchema);\r\n+module.exports = Contact;\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1719736464575,
+            "name": "Commit-0",
+            "content": "const mongoose = require('mongoose');\r\n\r\nconst BlogSchema = new mongoose.Schema({\r\n    name:{\r\n        type:String,\r\n        required:true\r\n    },\r\n    description:{\r\n        type:String,\r\n        required:true\r\n    },\r\n    image:{\r\n        type:String,\r\n        required:true\r\n    }\r\n})\r\nconst Blog = mongoose.model('Blog',BlogSchema);\r\nmodule.exports = Blog;"
+        }
+    ]
+}

@@ -1,0 +1,244 @@
+<div class="page">
+    <div class="page-main">
+
+        
+
+      
+
+        <!--app-content open-->
+        <div class="app-content main-content mt-0">
+            <div class="side-app">
+
+                <!-- CONTAINER -->
+                <div class="main-container container-fluid">
+
+                        
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <div>
+                            <h1 class="page-title">Service Page</h1>
+                        </div>
+                        <div class="ms-auto pageheader-btn">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Service Page</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Service</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+                   
+                   
+
+                   
+
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-header border-bottom">
+                                    <h3 class="card-title"> service</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted"></p>
+                                    <!-- Check if there are less than 3 banners before enabling the "Add" button -->
+                            
+                                    <a href="#" class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal">
+                                        Add
+                                    </a>
+                                
+                                    <!-- Display a message or modal to inform the user that they can't add more banners -->
+                                    <!-- <p style="color: red;">You have reached the maximum item limit. If you want to add more items, you must delete something below.</p> -->
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->
+
+              <!-- Row -->
+           <% if (Data) {%> 
+            <div class="row">
+                <div class="row row-sm">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header border-bottom">
+                                <h3 class="card-title"> Service Datatable</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="editable-responsive-table" class="table editable-table table-nowrap table-bordered table-edit wp-100">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Heading</th>
+                                                <th>Description</th>
+                                                <th>Image</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (let i = 0; i < Data.length; i++) { %>
+                                                <% let item = Data[i]; %>
+                                        
+                                            <tr>
+                                            
+                                                    <td><%= i + 1 %></td>
+                                                    <td><%= item.name %></td>
+                                                    <td><%= item.description %></td>
+                                                    <td><img src="<%= item.image %>" style="height: 5em;"></td>
+                                                    <td>
+                                                        <div class="card-body">
+                                                            <p class="text-muted"></p>
+                                                            <a  class="btn btn-success" data-bs-target="#modaldemo2_<%= i %>" data-bs-toggle="modal">Edit</a>
+                                                        <!-- data-bs-target="#modaldemo3_<%= i %>" data-bs-toggle="modal">Delete</a> -->
+                                                        <!-- <a class="btn btn-primary">   <button class="btn btn-danger" onclick="confirmDelete()">Delete</button></a> -->
+                                                        <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= i %>" data-bs-toggle="modal">Delete </a>
+                                                            
+                                                    
+                                                        </div> 
+                                                        
+                                                        
+                                                    </td>
+                                            
+                                            </tr>
+                                            <% } %>
+                                            
+                                            
+                                        
+                                                
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+           <%}else{%>
+            <p class="text-center">No Data </p>
+           <%}%>
+                   
+
+                    
+                </div>
+            </div>
+        </div>
+            <!-- CONTAINER CLOSED -->
+     </div>
+
+
+
+    
+    <!-- Addmodal -->
+    <div id="modaldemo1" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/admin/add-service" method="POST" enctype="multipart/form-data" >
+                <div class="modal-body">
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                   
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder=" Service Name" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Service Description" name="description" id="description" required>
+                    </div>
+                    <!-- form-group -->
+                    <div class="form-group">
+                        <input class="form-control" placeholder="banner image"  data-max-file-size="2KB" id="formFileLg" name="image" type="file" required>
+                    </div>
+                   
+                    
+                    <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
+                </div>
+            </form><!-- modal-body -->
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div><!--Add modal close -->
+
+ <!-- Editmodal -->
+ <% for (let i = 0; i < Data.length; i++) { %>
+    <% let item = Data[i]; %>
+    <div id="modaldemo2_<%= i %>" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="edit-service/<%= item._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <div class="modal-body">
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Service Name" value="<%= item.name %>" name="name" id="name" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder=" description" value="<%= item.description %>" name="description" id="subheading" >
+                        </div>
+                        <img src="<%= item.image %>"  id="selectedImage<%= item._id %>" style="height: 14em;">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="banner image" id="formFileLg_<%= i %>" value="selectedImage<%= item.image %>" name="image" type="file" onchange="updateImagePreview(this, 'selectedImage<%= item._id %>')">
+                        </div>
+                        <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
+                    </div>
+                </form><!-- modal-body -->
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div><!-- edit modal close -->
+
+
+
+    <!-- Delete Modal -->
+    <div id="modaldemo3_<%= i %>" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               
+                <div class="modal-body">
+                    <div class="modal-header" >
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                       </div>
+                       <div class="modal-body">
+                        <p>Are you sure you want to delete?</p>
+                      </div>
+                      <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                        <a href="delete-service/<%= item._id %>"  class="btn btn-danger" type="button">Yes</a>
+                       </div>
+            
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div>
+   </div>
+
+    <!-- Delete Modal Close -->
+
+
+<% } %>
+   
+
+
+
+</div>
+<script>
+    function updateImagePreview(input,imageId ) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById(imageId).src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+   
+
+</script>

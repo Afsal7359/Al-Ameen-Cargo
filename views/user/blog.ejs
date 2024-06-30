@@ -1,0 +1,314 @@
+<!-- Start of header section
+============================================= -->
+<header id="ft-header" class="ft-header-section header-style-two">
+    <div class="ft-header-top">
+        <div class="container">
+            <div class="ft-header-top-content d-flex justify-content-between align-items-center">
+                <div class="ft-header-top-cta ul-li">
+                    <ul>
+                        <li><i class="fal fa-envelope"></i>info@alameencargo.com</li>
+                        <li><i class="fal fa-map-marker-alt"></i>Azeeziya, Jeddah</li>
+                    </ul>
+                </div>
+                <div class="ft-header-cta-info d-flex">
+                    <div class="ft-header-cta-icon d-flex justify-content-center align-items-center">
+                        <i class="flaticon-call"></i>
+                    </div>
+                    <div class="ft-header-cta-text headline pera-content">
+                        <p>Get In Touch</p>
+                        <a href="tel:0535188259"></a><h3>0535188259</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ft-header-main-menu-wrapper">
+        <div class="container">
+            <div class="ft-header-main-menu-area position-relative">
+                <div class="ft-header-main-menu d-flex align-items-center justify-content-between position-relative">
+                    <div class="ft-site-logo-area">
+                        <div class="ft-site-logo position-relative">
+                            <a href="/"><img src="assets/images/new/logo.png" style="height: 52px;" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="ft-main-navigation-area">
+                        <nav class="ft-main-navigation clearfix ul-li">
+                            <ul id="ft-main-nav" class="nav navbar-nav clearfix">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/service">Services</a></li>
+                                <li><a href="/blog">News & Blogs</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="ft-header-cta-btn">
+                        <a class="d-flex justify-content-center align-items-center" href="/contact">Get Free Quote</a>
+                    </div>
+                </div>
+                <div class="mobile_menu position-relative">
+                    <div class="mobile_menu_button open_mobile_menu">
+                        <i class="fal fa-bars"></i>
+                    </div>
+                    <div class="mobile_menu_wrap">
+                        <div class="mobile_menu_overlay open_mobile_menu"></div>
+                        <div class="mobile_menu_content">
+                            <div class="mobile_menu_close open_mobile_menu">
+                                <i class="fal fa-times"></i>
+                            </div>
+                            <div class="m-brand-logo">
+                                <a href="%21.html#"><img src="assets/images/new/logo.png" alt=""></a>
+                            </div>
+                            <nav class="mobile-main-navigation  clearfix ul-li">
+                                <ul id="ft-main-nav" class="nav navbar-nav clearfix">
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/service">Services</a></li>
+                                    <li><a href="/blog">News & Blogs</a></li>
+                                    <li><a href="/contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- /Mobile-Menu -->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End of header section
+============================================= -->
+
+<!-- Start of Breadcrumb section
+============================================= -->
+<section id="ft-breadcrumb" class="ft-breadcrumb-section position-relative" data-background="assets/img/bg/bread-bg.jpg">
+    <span class="background_overlay"></span>
+    <span class="design-shape position-absolute"><img src="assets/img/shape/tmd-sh.png" alt=""></span>
+    <div class="container">
+        <div class="ft-breadcrumb-content headline text-center position-relative">
+            <h2>Blog</h2>
+            <div class="ft-breadcrumb-list ul-li">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>Blog</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>	
+<!-- End of Breadcrumb section
+============================================= -->
+
+<!-- Start of blog post feed section
+============================================= -->
+<section id="ft-blog-post-feed" class="ft-blog-post-feed-section page-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="ft-blog-post-feed-content">
+                    <% if (BlogData){%>
+						<% for (let i = 0; i < BlogData.length; i++){%>
+						   <% let item = BlogData[i] %>
+                    <div class="ft-blog-post-feed-innerbox">
+                        <div class="ft-blog-post-feed-img">
+                            <img src="<%=item.image%>" alt="" style="height: 385px;width: 850px;">
+                        </div>
+                        <div class="ft-blog-post-feed-text-wrapper headline pera-content">
+                           
+                            <div class="ft-blog-feed-title-text">
+                                <h3><a ><%=item.name%></a></h3>
+                                <p><%=item.description%></p>
+                            </div>
+                            <div class="ft-btn-2">
+                                <a href="#">
+                                    <i class="icon-first flaticon-right-arrow"></i>
+                                    <span>Read More</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                    <%}%>
+                    
+                </div>
+                <!-- <div class="ft-pagination-item  ul-li">
+                    <ul>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="col-lg-3">
+                <div class="ft-side-bar-wrapper top-stikcy">
+                    <div class="ft-side-bar-widget-area">
+                        <div class="ft-side-bar-widget search-widget-area headline ul-li-block">
+                            <div class="search-widget position-relative">
+                                <form action="#">
+                                    <input type="text" placeholder="Search.">
+                                    <button><i class="far fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="ft-side-bar-widget headline ul-li-block">
+                            <div class="category-widget">
+                                <h3 class="widget-title position-relative">Categories</h3>
+                                <ul>
+                                    <li><a >Ocean Freight <span>3</span></a></li>
+                                    <li><a>Air Freight <span>3</span></a></li>
+                                    <li><a>Rail Project <span>3</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft-side-bar-widget headline ul-li-block">
+                            <div class="recent-news-widget">
+                                <h3 class="widget-title position-relative">Recent News</h3>
+                                <% if (RecendBlog){%>
+                                    <% for (let i = 0; i < RecendBlog.length; i++){%>
+                                       <% let item = RecendBlog[i] %>
+                                <div class="recent-blog-img-text clearfix">
+                                    <div class="recent-blog-img float-left">
+                                        <img src="<%=item.image%>" alt="">
+                                    </div>
+                                    <div class="recent-blog-text headline">
+                                        <h3><a href="#"><%=item.name%></a></h3>
+                                        <span> <%=item.description.substring(0,25)%></span>
+                                    </div>
+                                </div>
+                                <%}%>
+                                <%}%>
+                            </div>
+                        </div>
+                        <div class="ft-side-bar-widget headline ul-li-block">
+                            <div class="category-widget">
+                                <h3 class="widget-title position-relative">Archives</h3>
+                                <ul>
+                                    <li><a href="blog.html">Ocean Freight <span>3</span></a></li>
+                                    <li><a href="blog.html">Air Freight <span>3</span></a></li>
+                                    <li><a href="blog.html">Rail Project <span>3</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ft-side-bar-widget headline ul-li-block">
+                            <div class="gallery-widget">
+                                <h3 class="widget-title position-relative">Gallery</h3>
+                                <ul class="zoom-gallery">
+                                    <li><a href="assets/img/gallery/gl1.jpg" data-source="assets/img/gallery/gl1.jpg"><img src="assets/img/gallery/gl1.jpg" alt=""></a></li>
+                                    <li><a href="assets/img/gallery/gl2.jpg" data-source="assets/img/gallery/gl2.jpg"><img src="assets/img/gallery/gl2.jpg" alt=""></a></li>
+                                    <li><a href="assets/img/gallery/gl3.jpg" data-source="assets/img/gallery/gl3.jpg"><img src="assets/img/gallery/gl3.jpg" alt=""></a></li>
+                                    <li><a href="assets/img/gallery/gl4.jpg" data-source="assets/img/gallery/gl4.jpg"><img src="assets/img/gallery/gl4.jpg" alt=""></a></li>
+                                    <li><a href="assets/img/gallery/gl5.jpg" data-source="assets/img/gallery/gl4.jpg"><img src="assets/img/gallery/gl5.jpg" alt=""></a></li>
+                                    <li><a href="assets/img/gallery/gl6.jpg" data-source="assets/img/gallery/gl4.jpg"><img src="assets/img/gallery/gl6.jpg" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- <div class="ft-side-bar-widget headline ul-li-block">
+                            <div class="tag-widget">
+                                <h3 class="widget-title position-relative">Archives</h3>
+                                <ul>
+                                    <li><a href="blog.html">Business</a></li>
+                                    <li><a href="blog.html">Cargo</a></li>
+                                    <li><a href="blog.html">Freight</a></li>
+                                    <li><a href="blog.html">Truck</a></li>
+                                    <li><a href="blog.html">Ship</a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="ft-side-bar-add headline ul-li-block">
+                            <a href="/contact">
+                                <img src="assets/images/new/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of blog post section
+============================================= -->		
+
+<footer id="ft-footer-2" class="ft-footer-section-2" data-background="assets/img/bg/f-bg.png">
+    <div class="ft-footer-newslatter position-relative">
+        <div class="container">
+            <div class="ft-footer-newslatter-content d-flex justify-content-between align-items-center flex-wrap">
+                <div class="ft-footer-newslatter-text headline">
+                    <h2>Sign up for  News & Updates</h2>	
+                </div>
+                <div class="ft-footer-newslatter-form position-relative">
+                    <form action="#">
+                        <input type="text" placeholder="Email">
+                        <button type="submit">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ft-footer-widget-wrapper-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="ft-footer-widget ul-li-block headline pera-content">
+                        <div class="logo-widget">
+                            <div class="site-logo">
+                                <a href="#"><img src="assets/images/new/logo.png" alt=""></a>
+                            </div>
+                            <div class="ft-footer-address">
+                                <span>Azeeziya, Jeddah</span>
+                                <a href="mailto:info@alameencargo.com"><span>Email: info@alameencargo.com</span></a>
+                               <a href="tel:0535188259"><span>Phone: 0535188259</span></a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ft-footer-widget ul-li-block headline pera-content">
+                        <div class="menu-widget">
+                            <h3 class="widget-title">Our Services</h3>
+                            <ul>
+                                <li><a href="/service">Air Freight</a></li>
+                                <li><a href="/service">Ocen Freight</a></li>
+                                <li><a href="/service">Warehousing</a></li>
+                                <li><a href="/service">Global stock transparency</a></li>
+                                <li><a href="/service">Transport consolidation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ft-footer-widget ul-li-block headline pera-content">
+                        <div class="menu-widget">
+                            <h3 class="widget-title">Industry Sectors</h3>
+                            <ul>
+                                <li><a href="/service">Electronics Industry</a></li>
+                                <li><a href="/service">Industrial & Manufacturing</a></li>
+                                <li><a href="/service">Semicon & Solar</a></li>
+                                <li><a href="/service">Oil & Gas Cargo</a></li>
+                                <li><a href="/service">Energy & Chemicals</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ft-footer-widget ul-li-block headline pera-content">
+                        <div class="menu-widget">
+                            <h3 class="widget-title">Quick Links</h3>
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/service">Services</a></li>
+                                <li><a href="/blog">News & Blogs</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ft-footer-copywrite-2 text-center">
+        <span>Design & Developed by @<a href="https://www.cyenosure.com/" target="_blank">Cyenousre</a></span>
+    </div>
+</footer>		
+<!-- End of FAQ why choose  section
+============================================= -->	

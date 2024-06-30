@@ -1,0 +1,78 @@
+{
+    "sourceFile": "routes/admin.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 15,
+            "patches": [
+                {
+                    "date": 1719678179382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1719678185735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,8 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.)\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719679130142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719679135356,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719679145512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.)\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719730104486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,40 +3,8 @@\n var router = express.Router();\n \n /* GET users listing. */\n router.get('/',AdminController.RenderAdminhome);\n-router.get('/service',AdminController.)\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('add-service')\n \n module.exports = router;\n-var express = require('express');\n-const AdminController = require('../controller/AdminController');\n-var router = express.Router();\n-\n-/* GET users listing. */\n-router.get('/',AdminController.RenderAdminhome);\n-router.get\n-\n-module.exports = router;\n-var express = require('express');\n-const AdminController = require('../controller/AdminController');\n-var router = express.Router();\n-\n-/* GET users listing. */\n-router.get('/',AdminController.RenderAdminhome);\n-router\n-\n-module.exports = router;\n-var express = require('express');\n-const AdminController = require('../controller/AdminController');\n-var router = express.Router();\n-\n-/* GET users listing. */\n-router.get('/',AdminController.)\n-\n-module.exports = router;\n-var express = require('express');\n-var router = express.Router();\n-\n-/* GET users listing. */\n-router.get('/',)\n-\n-module.exports = router;\n"
+                },
+                {
+                    "date": 1719730110650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n \n /* GET users listing. */\n router.get('/',AdminController.RenderAdminhome);\n router.get('/service',AdminController.RenderAdminService);\n-router.post('add-service')\n+router.post('add-service',AdminController.)\n \n module.exports = router;\n"
+                },
+                {
+                    "date": 1719730116195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,10 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('add-service',AdminController.RenderAdminService);\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719730279694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,17 +4,7 @@\n \n /* GET users listing. */\n router.get('/',AdminController.RenderAdminhome);\n router.get('/service',AdminController.RenderAdminService);\n-router.post('add-service',AdminController.RenderAdminService);\n+router.post('/add-service',AdminController.Add);\n \n module.exports = router;\n-var express = require('express');\n-const AdminController = require('../controller/AdminController');\n-var router = express.Router();\n-\n-/* GET users listing. */\n-router.get('/',AdminController.RenderAdminhome);\n-router.get('/service',AdminController.RenderAdminService);\n-router.post('add-service',AdminController.)\n-\n-module.exports = router;\n"
+                },
+                {
+                    "date": 1719730317460,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+const upload = require('../util/multer');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('/add-service',upload.single,AdminController.AddService);\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719734423795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+const upload = require('../util/multer');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('/add-service',upload.single('image'),AdminController.AddService);\n+router.post\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719734432175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+const upload = require('../util/multer');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('/add-service',upload.single('image'),AdminController.AddService);\n+router.post('edit-service')\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719734438114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+const upload = require('../util/multer');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('/add-service',upload.single('image'),AdminController.AddService);\n+router.post('/edit-service:')\n+\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719734443786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n /* GET users listing. */\n router.get('/',AdminController.RenderAdminhome);\n router.get('/service',AdminController.RenderAdminService);\n router.post('/add-service',upload.single('image'),AdminController.AddService);\n-router.post('/edit-service:')\n+router.post('/edit-service/:id')\n \n module.exports = router;\n"
+                },
+                {
+                    "date": 1719734449072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,5 @@\n router.get('/service',AdminController.RenderAdminService);\n router.post('/add-service',upload.single('image'),AdminController.AddService);\n router.post('/edit-service/:id',uplo)\n \n-module.exports = rou\n\\ No newline at end of file\n+module.exports = router;\n"
+                },
+                {
+                    "date": 1719734455314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+var express = require('express');\n+const AdminController = require('../controller/AdminController');\n+const upload = require('../util/multer');\n+var router = express.Router();\n+\n+/* GET users listing. */\n+router.get('/',AdminController.RenderAdminhome);\n+router.get('/service',AdminController.RenderAdminService);\n+router.post('/add-service',upload.single('image'),AdminController.AddService);\n+router.post('/edit-service/:id',upload.single(''))\n+\n+module.exports = router;\n"
+                }
+            ],
+            "date": 1719678179382,
+            "name": "Commit-0",
+            "content": "var express = require('express');\nvar router = express.Router();\n\n/* GET users listing. */\nrouter.get('/',)\n\nmodule.exports = router;\n"
+        }
+    ]
+}
