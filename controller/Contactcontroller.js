@@ -51,5 +51,15 @@ module.exports={
         } catch (error) {
             console.log(error);
         }
+    },
+    DeleteContact : async(req,res)=>{
+        try {
+            const id = req.params.id
+            await Contact.findByIdAndDelete(id);
+            res.redirect('/admin/contact')
+            console.log("deleted Successfully");
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
