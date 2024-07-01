@@ -23,7 +23,7 @@ router.post('/edit-blog/:id',adminauth.adminauth, upload.single('image'),AdminCo
 router.get('/delete-blog/:id',adminauth.adminauth, AdminController.DeleteBlog);
 
 router.get('/contact',adminauth.adminauth, Contactcontroller.RenderContactAdminPage)
-router.post('/Addcontact',adminauth.adminauth, Contactcontroller.AddContact);
+router.post('/Addcontact', Contactcontroller.AddContact);
 router.get('/delete-contact/:id',adminauth.adminauth, Contactcontroller.DeleteContact);
 
 
