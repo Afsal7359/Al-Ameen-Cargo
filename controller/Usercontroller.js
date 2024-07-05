@@ -7,7 +7,8 @@ module.exports ={
         try {
             const ServiceData = await Service.find();
             const BlogData = await Blog.find().sort({_id:-1}).limit(3)
-            res.render('user/home',{ServiceData,BlogData})
+            let message
+            res.render('user/home',{ServiceData,BlogData,message})
         } catch (error) {
             console.log(error);
         }
@@ -42,5 +43,44 @@ module.exports ={
         } catch (error) {
             console.log(error);
         }
+    },
+    RenderTrackingPage: async(req,res)=>{
+        try {
+            res.render('user/tracking');
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    TrackingPost: async (req, res) => {
+        try {
+            const trackingid = req.body.trackingid;
+            console.log(trackingid, "id");
+            const response = await fetch('https://alameencargo.cyenosure.co.in/api/tracking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ booking_no: trackingid })
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const responseData = await response.json();
+            const data = responseData.data;
+            console.log(data, "dddddddddda");
+            if (data) {
+                res.render('user/tracking',{ data: JSON.stringify(data) }); // Pass data as JSON string
+            }else{
+                const ServiceData = await Service.find();
+                const BlogData = await Blog.find().sort({_id:-1}).limit(3)
+                const message= "Tracking Id Not Found"
+                res.render('user/home',{ServiceData,BlogData,message})
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
+    
 }

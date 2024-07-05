@@ -9,5 +9,7 @@ router.get('/service',Usercontroller.RenderServicePage);
 router.get('/contact',Usercontroller.RenderContactPage);
 router.get('/service',Usercontroller.RenderServicePage);
 router.get('/blog',Usercontroller.RenderBlogPage);
+// router.get('/tracking',Usercontroller.RenderTrackingPage);
+router.post('/tracking',Usercontroller.TrackingPost);
 
 module.exports = router;
