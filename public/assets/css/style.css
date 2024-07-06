@@ -36,7 +36,8 @@ Color Code
 .ft-testimonial-slider-area .slick-dots, .ft-project-slider-area .slick-dots, .ft-service-slider-2 .slick-dots, .ft-service-slider-wrapper .slick-dots {
   margin-top: 55px;
   position: static;
-}.track{position: relative;background-color: #ddd;height: 7px;display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 60px;margin-top: 50px}
+}
+.track{position: relative;background-color: #ddd;height: 7px;display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 60px;margin-top: 50px}
 .track .step{-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;width: 25%;margin-top: -18px;text-align: center;position: relative}
 .track .step.active:before{background: #FF5722}
 .track .step::before{height: 7px;position: absolute;content: "";width: 100%;left: 0;top: 18px}
@@ -45,8 +46,62 @@ Color Code
 .track .step.delivered:before{background: #18a613}
 .track .step.delivered .icon{background: #18a613;color: #fff}
 
-.track .icon{display: inline-block;width: 40px;height: 40px;line-height: 40px;position: relative;border-radius: 100%;background: #ddd}.track .step.active .text{font-weight: 400;color: #000}.track .text{display: block;margin-top: 7px}.itemside{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;width: 100%}.itemside .aside{position: relative;-ms-flex-negative: 0;flex-shrink: 0}.img-sm{width: 80px;height: 80px;padding: 7px}ul.row, ul.row-sm{list-style: none;padding: 0}.itemside .info{padding-left: 15px;padding-right: 7px}.itemside .title{display: block;margin-bottom: 5px;color: #212529}p{margin-top: 0;margin-bottom: 1rem}.btn-warning{color: #ffffff;background-color: #ee5435;border-color: #ee5435;border-radius: 1px}.btn-warning:hover{color: #ffffff;background-color: #ff2b00;border-color: #ff2b00;border-radius: 1px}
+.track .icon{display: inline-block;width: 40px;height: 40px;line-height: 40px;position: relative;border-radius: 100%;background: #ddd}
+.track .step.active .text{font-weight: 400;color: #000}
+.track .text{display: block;margin-top: 7px}
+.itemside{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;width: 100%}
+.itemside .aside{position: relative;-ms-flex-negative: 0;flex-shrink: 0}
+.img-sm{width: 80px;height: 80px;padding: 7px}
+ul.row, ul.row-sm{list-style: none;padding: 0}
+.itemside .info{padding-left: 15px;padding-right: 7px}
+.itemside .title{display: block;margin-bottom: 5px;color: #212529}p{margin-top: 0;margin-bottom: 1rem}.btn-warning{color: #ffffff;background-color: #ee5435;border-color: #ee5435;border-radius: 1px}.btn-warning:hover{color: #ffffff;background-color: #ff2b00;border-color: #ff2b00;border-radius: 1px}
+/* Mobile styles */
 
+/* Mobile styles */
+@media (max-width: 768px) {
+  .track {
+      flex-direction: column;
+      height: auto;
+      margin-bottom: 0;
+      background-color: #eee; /* Added grey background for mobile */
+      padding: 20px;
+  }
+
+  .track .step {
+      width: 100%;
+      margin: 0 0 40px 0; /* Increased margin to ensure separation */
+      display: flex;
+      flex-direction: column; /* Changed to column for vertical alignment */
+      align-items: left;
+      position: relative;
+  }
+
+  .track .step::before {
+      width: 7px;
+      height: 100%;
+      left: 4%;
+      top: 40px;
+      transform: translateX(-50%);
+      background: inherit;
+  }
+  .track .steps::before {
+    width: 7px;
+    left: 5%;
+    top: 40px;
+    transform: translateX(-50%);
+    background: inherit;
+}
+
+  .track .icon {
+      order: -1;
+      margin-bottom: 10px; /* Added margin to the bottom of the icon */
+  }
+
+  .track .step .text {
+      margin-top: 20px; 
+      color: #000;
+  }
+}
 .card{
   margin: auto;
   width: 65%;
@@ -63,6 +118,24 @@ Color Code
   .card{
       width: 90%;
   }
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#fff;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
 }
 .title{
   color: rgb(252, 103, 49);
