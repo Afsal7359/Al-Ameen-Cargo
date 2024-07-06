@@ -102,6 +102,31 @@ ul.row, ul.row-sm{list-style: none;padding: 0}
       color: #000;
   }
 }
+
+
+@media (max-width: 570px){
+
+  .track .step::before {
+      width: 7px;
+      height: 100%;
+      left: 6%;
+      top: 40px;
+      transform: translateX(-50%);
+      background: inherit;
+  }
+}
+@media (max-width: 390px){
+
+  .track .step::before {
+      width: 7px;
+      height: 100%;
+      left: 9%;
+      top: 40px;
+      transform: translateX(-50%);
+      background: inherit;
+  }
+}
+
 .card{
   margin: auto;
   width: 65%;
@@ -119,6 +144,7 @@ ul.row, ul.row-sm{list-style: none;padding: 0}
       width: 90%;
   }
 }
+
 .float{
 	position:fixed;
 	width:60px;
