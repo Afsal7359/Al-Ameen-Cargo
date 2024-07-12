@@ -187,7 +187,7 @@
                     statusHTML += `
                         <div class="order-tracking " id='${index}-${statusIndex + 1}'>
                              <span class="is-complete"></span>
-                              <p>${status.status}<br><span>${status.date}</span><br><span>${status.comment !== null ? status.comment : ""}</span></p>
+                              <p>${status.status}<br><span>${status.date}</span><br><span class="comment-text">${status.comment !== null ? status.comment : ""}</span></p>
                         </div>`;
                 });
             }

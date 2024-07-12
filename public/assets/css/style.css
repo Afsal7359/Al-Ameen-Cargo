@@ -97,7 +97,7 @@ Color Code
   border-color: #fff;
 }
 .order-tracking p {
-  color: #A4A4A4;
+  color: #000;
   font-size: 16px;
   margin-top: 8px;
   margin-bottom: 0;
@@ -108,7 +108,7 @@ Color Code
 .order-tracking::before {
   content: '';
   display: block;
-  height: calc(100% - 7px);
+  height: calc(105% - 7px);
   width: 3px;
   background-color: #f7be16;
   top: 30px;
@@ -215,6 +215,9 @@ ul.row, ul.row-sm{list-style: none;padding: 0}
       transform: translateX(-50%);
       background: inherit;
   }
+}
+.comment-text{
+  color: #8f1320;
 }
 .card{
   margin: auto;
