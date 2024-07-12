@@ -70,7 +70,7 @@ module.exports ={
             const responseData = await response.json();
             const data = responseData.data;
             console.log(data, "dddddddddda");
-            if (data) {
+            if (data?data.length !== 0 : data) {
                 res.render('user/tracking',{ data: JSON.stringify(data) }); // Pass data as JSON string
             }else{
                 const ServiceData = await Service.find();

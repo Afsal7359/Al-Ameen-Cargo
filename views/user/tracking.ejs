@@ -79,8 +79,9 @@
     <section id="ft-breadcrumb" class="ft-breadcrumb-section position-relative">
        
         <div id="tracking-container"></div>
-        
+    
     </section>
+   
     <!-- Start of Footer section
 	============================================= -->
 	<footer id="ft-footer" class="ft-footer-section">
@@ -184,16 +185,11 @@
                         hasDeliveryArranged = true;
                     }
                     statusHTML += `
-                        <div class="step" id='step${index}-${statusIndex + 1}'>
-                            <span class="icon">
-                                <i class="fa fa-check"></i>
-                            </span>
-                            <span class="text">${status.status}</span>
-                            <span class="text">${status.date}  ${status.comment !== null ?status.comment:""}</span>
+                        <div class="order-tracking " id='${index}-${statusIndex + 1}'>
+                             <span class="is-complete"></span>
+                              <p>${status.status}<br><span>${status.date}</span><br><span>${status.comment !== null ? status.comment : ""}</span></p>
                         </div>`;
                 });
-            } else {
-                statusHTML += `<li class="step0" id="step${index}-1">${order.statuses}</li>`;
             }
     
             const firstStatusDate = Array.isArray(order.statuses) ? order.statuses[0].date : order.date;
@@ -201,31 +197,33 @@
             card.innerHTML = `
                 <div class="info">
                     <div class="row">
-                        <div class="col-7">
+                   
+                    <div class="tracking">
+                        <div class="title">Tracking Order</div>
+                    </div>
+                         <div class="col-6">
                             <span id="heading" style="color:#000">Date</span><br>
                             <span id="details" style="color:#000">${firstStatusDate}</span>
                         </div>
-                        <div class="col-5 pull-right">
+                        <div class="col-6 mb-5 pull-right">
                             <span id="heading" style="color:#000">Box No.</span><br>
                             <span id="details" style="color:#000">${order.box_names}</span>
                         </div>
                     </div>
-                    <div class="tracking">
-                        <div class="title">Tracking Order</div>
-                    </div>
-                    <div class="track">
-                        ${statusHTML}
-                    </div>
+                        <div class=" row justify-content-center mx-5">
+                            ${statusHTML}
+                        </div>
                 </div>
             `;
     
-            if (hasDeliveryArranged) {
-                const steps = card.querySelectorAll('.step');
-                steps.forEach(step => step.classList.add('delivered'));
-            } else {
-                const steps = card.querySelectorAll('.step');
-                steps.forEach(step => step.classList.add('active'));
-            }
+            const steps = card.querySelectorAll('.order-tracking');
+            steps.forEach(step => {
+                if (hasDeliveryArranged) {
+                    step.classList.add('completed');
+                } else {
+                    step.classList.add('active');
+                }
+            });
     
             return card;
         }
@@ -233,6 +231,7 @@
         // Fetch the status when the page loads
         window.onload = () => fetchStatus();
     </script>
+    
     
     
     

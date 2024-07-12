@@ -37,6 +37,96 @@ Color Code
   margin-top: 55px;
   position: static;
 }
+
+
+
+
+
+
+
+.hh-grayBox {
+  background-color: #F8F8F8;
+  margin-bottom: 20px;
+  padding: 35px;
+  margin-top: 20px;
+}
+.pt45 { padding-top: 45px; }
+.order-tracking {
+  /* text-align: left;
+  width: 100%; */
+  position: relative;
+  display: block;
+  margin-left: 40px;
+  padding-bottom: 62px;
+}
+.order-tracking .is-complete {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 0px solid #AFAFAF;
+  background-color: #f7be16;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  z-index: 2;
+  top: 0;
+  left: -40px;
+}
+.order-tracking .is-complete:after {
+  display: block;
+  position: absolute;
+  content: '';
+  height: 14px;
+  width: 7px;
+  top: 8px;
+  left: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 1;
+}
+.order-tracking.completed .is-complete {
+  border-color: #27aa80;
+  background-color: #27aa80;
+}
+.order-tracking.completed .is-complete:after {
+  border-color: #fff;
+}
+.order-tracking .is-complete:after {
+  border-color: #fff;
+}
+.order-tracking p {
+  color: #A4A4A4;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+.order-tracking p span { font-size: 14px; }
+.order-tracking.completed p { color: #000; }
+.order-tracking::before {
+  content: '';
+  display: block;
+  height: calc(100% - 7px);
+  width: 3px;
+  background-color: #f7be16;
+  top: 30px;
+  position: absolute;
+  left: -25px;
+  z-index: 0;
+  margin-top: -132px;
+}
+.order-tracking:first-child::before { display: none; }
+.order-tracking.completed::before { background-color: #27aa80; }
+
+
+
+
+
+
+
+
 .track{position: relative;background-color: #ddd;height: 7px;display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 60px;margin-top: 50px}
 .track .step{-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;width: 25%;margin-top: -18px;text-align: center;position: relative}
 .track .step.active:before{background: #FF5722}
@@ -126,15 +216,14 @@ ul.row, ul.row-sm{list-style: none;padding: 0}
       background: inherit;
   }
 }
-
 .card{
   margin: auto;
-  width: 65%;
+  width: 30%;
   max-width:900px;
   padding: 4vh 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-top: 3px solid rgb(252, 103, 49);
-  border-bottom: 3px solid rgb(252, 103, 49);
+  /* border-top: 3px solid rgb(252, 103, 49);
+  border-bottom: 3px solid rgb(252, 103, 49); */
   border-left: none;
   border-right: none;
   display: flex;
