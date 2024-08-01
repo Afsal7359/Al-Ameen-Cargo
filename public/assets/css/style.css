@@ -66,7 +66,7 @@ Color Code
   height: 30px;
   width: 30px;
   border: 0px solid #AFAFAF;
-  background-color: #f7be16;
+  background-color: #AFAFAF;
   transition: background 0.25s linear;
   -webkit-transition: background 0.25s linear;
   z-index: 2;
@@ -110,7 +110,7 @@ Color Code
   display: block;
   height: calc(105% - 7px);
   width: 3px;
-  background-color: #f7be16;
+  background-color: #AFAFAF;
   top: 30px;
   position: absolute;
   left: -25px;
@@ -418,6 +418,12 @@ ul.row, ul.row-sm{list-style: none;padding: 0}
 #progressbar li.delivered:before,
 #progressbar li.delivered:after {
   background: rgb(0, 220, 51);
+}
+
+.trackingdetails {
+  padding: 10px;
+  background-color: #00b10c;
+  border-radius: 120px;
 }
 .ft-testimonial-slider-area .slick-dots li, .ft-project-slider-area .slick-dots li, .ft-service-slider-2 .slick-dots li, .ft-service-slider-wrapper .slick-dots li {
   width: 10px;

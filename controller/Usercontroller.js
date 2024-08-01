@@ -69,9 +69,10 @@ module.exports ={
     
             const responseData = await response.json();
             const data = responseData.data;
+            const adress = responseData.adress;
             console.log(data, "dddddddddda");
             if (data?data.length !== 0 : data) {
-                res.render('user/tracking',{ data: JSON.stringify(data) }); // Pass data as JSON string
+                res.render('user/tracking',{ data: JSON.stringify(data), adress: JSON.stringify(adress) }); // Pass data as JSON string
             }else{
                 const ServiceData = await Service.find();
                 const BlogData = await Blog.find().sort({_id:-1}).limit(3)

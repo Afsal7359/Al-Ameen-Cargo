@@ -77,7 +77,29 @@
 ============================================= -->
 
     <section id="ft-breadcrumb" class="ft-breadcrumb-section position-relative">
-       
+        <div class="info">
+            <div class="row table-responsive">
+               <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th style="font-size: medium;">Invoice Number</th>
+                        <th style="font-size: medium;">Reciever Address</th>
+                        <th style="font-size: medium;">Box</th>
+                        <th style="font-size: medium;">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width:190px;font-size: medium;"></td>
+                        <td style="width:190px;font-size: medium;">Addess East Jaintia Hills, Kerala, India,</td>
+                        <td style="width:190px;font-size: medium;">13</td>
+                        <th style="width:190px;font-size: medium;">Comments</th>
+                    </tr>
+                </tbody>
+               </table>
+            </div>
+            </div>
+            </div>
         <div id="tracking-container"></div>
     
     </section>
@@ -155,10 +177,72 @@
 	============================================= -->	
     <script>
         var datas = JSON.parse('<%- data %>');
-        console.log(datas, "Daaaaaaaa");
+        var address = JSON.parse('<%- adress %>');
+        console.log(address.receiver_boxes ,"address");
+        function populateTable() {
+        const tbody = document.querySelector('.table tbody');
+        tbody.innerHTML = ''; // Clear any existing rows
+
+       
+            const tr = document.createElement('tr');
+
+            const invoiceTd = document.createElement('td');
+            invoiceTd.style.width = '190px';
+            invoiceTd.style.fontSize = 'medium';
+            invoiceTd.textContent = address.invoice_number;  // Use the appropriate property name from your data
+
+            const addressTd = document.createElement('td');
+            addressTd.style.width = '190px';
+            addressTd.style.fontSize = 'medium';
+            addressTd.innerHTML = `
+                ${address.receiver_name}
+                ${address.receiver_address}
+                ${address.receiver_city_name}
+                ${address.receiver_state}
+                ${address.receiver_district}
+                ${address.receiver_zip_code}
+                ${address.receiver_country}
+            `; 
+
+            const boxTd = document.createElement('td');
+            boxTd.style.width = '190px';
+            boxTd.style.fontSize = 'medium';
+            boxTd.textContent = address.receiver_boxes; // Use the appropriate property name from your data
+
+            const commentTd = document.createElement('td');
+            commentTd.style.width = '190px';
+            commentTd.style.fontSize = 'medium';
+            commentTd.textContent = address.receiver_comment; // Use the appropriate property name from your data
+
+            tr.appendChild(invoiceTd);
+            tr.appendChild(addressTd);
+            tr.appendChild(boxTd);
+            tr.appendChild(commentTd);
+
+            tbody.appendChild(tr);
+        }
+    
+
+        const statusOrder = [
+            "Shipment booked",
+            "Shipment received",
+            "Shipment forwarded",
+            "Shipment arrived",
+            "Waiting for clearance",
+            "Shipment cleared",
+            "Out for Delivery",
+            "Delivery arranged",
+        ];
+    
+        const conditionalStatuses = [
+            { primary: "Waiting for clearance", secondary: "Shipment on hold" },
+            { primary: "Out for Delivery", secondary: "Pending" },
+            { primary: "Delivery arranged", secondary: "Not Delivered" }
+        ];
     
         async function fetchStatus() {
             try {
+                populateTable()
                 const trackingContainer = document.getElementById('tracking-container');
                 trackingContainer.innerHTML = ''; // Clear previous tracking cards
     
@@ -176,32 +260,52 @@
             const card = document.createElement('div');
             card.classList.add('card');
             card.id = `tracking${index}`;
-            let hasDeliveryArranged = false;
+    
+            const completedStatuses = order.statuses.map(status => status.status.trim());
+            let latestCompletedIndex = -1;
+    
+            // Determine the index of the latest completed status
+            completedStatuses.forEach(status => {
+                const currentIndex = statusOrder.indexOf(status);
+                if (currentIndex > latestCompletedIndex) {
+                    latestCompletedIndex = currentIndex;
+                }
+            });
     
             let statusHTML = '';
-            if (Array.isArray(order.statuses)) {
-                order.statuses.forEach((status, statusIndex) => {
-                    if (status.status === "Delivery arranged") {
-                        hasDeliveryArranged = true;
+            statusOrder.forEach((status, statusIndex) => {
+                let isStatusVisible = true;
+    
+                // Check if we should display primary or secondary from conditional pairs
+                for (const { primary, secondary } of conditionalStatuses) {
+                    if (status === primary && completedStatuses.includes(secondary)) {
+                        isStatusVisible = false;
+                        break;
                     }
+                }
+    
+                if (isStatusVisible) {
+                    const isCompleted = statusIndex <= latestCompletedIndex;
+                    const statusClass = isCompleted ? 'completed' : 'pending';
+                    const matchingStatus = order.statuses.find(s => s.status.trim() === status);
+    
                     statusHTML += `
-                        <div class="order-tracking " id='${index}-${statusIndex + 1}'>
-                             <span class="is-complete"></span>
-                              <p>${status.status}<br><span>${status.date}</span><br><span class="comment-text">${status.comment !== null ? status.comment : ""}</span></p>
+                        <div class="order-tracking ${statusClass}" id='${index}-${statusIndex + 1}'>
+                            <span class="is-complete"></span>
+                            <p>${status}<br><span>${matchingStatus ? matchingStatus.date : ''}</span><br><span class="comment-text">${matchingStatus && matchingStatus.comment ? matchingStatus.comment : ""}</span></p>
                         </div>`;
-                });
-            }
+                }
+            });
     
             const firstStatusDate = Array.isArray(order.statuses) ? order.statuses[0].date : order.date;
     
             card.innerHTML = `
                 <div class="info">
                     <div class="row">
-                   
-                    <div class="tracking">
-                        <div class="title">Tracking Order</div>
-                    </div>
-                         <div class="col-6">
+                        <div class="tracking">
+                            <div class="title">Tracking Order</div>
+                        </div>
+                        <div class="col-6">
                             <span id="heading" style="color:#000">Date</span><br>
                             <span id="details" style="color:#000">${firstStatusDate}</span>
                         </div>
@@ -210,20 +314,11 @@
                             <span id="details" style="color:#000">${order.box_names}</span>
                         </div>
                     </div>
-                        <div class=" row justify-content-center mx-5">
-                            ${statusHTML}
-                        </div>
+                    <div class="row justify-content-center mx-5">
+                        ${statusHTML}
+                    </div>
                 </div>
             `;
-    
-            const steps = card.querySelectorAll('.order-tracking');
-            steps.forEach(step => {
-                if (hasDeliveryArranged) {
-                    step.classList.add('completed');
-                } else {
-                    step.classList.add('active');
-                }
-            });
     
             return card;
         }
@@ -239,5 +334,19 @@
     
     
     
+    
+    
+    
+    
+Shipment booked
+Shipment received
+Shipment forwarded
+Shipment arrived
+Waiting for clearance / Shipment on hold
+Shipment cleared
+Out for Delivery / Pending
+Delivery arranged / Not Delivered
+
+
     
     
