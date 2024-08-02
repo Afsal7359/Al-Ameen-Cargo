@@ -104,7 +104,7 @@
                 <article class="card">
                     <!-- <header class="card-header"> My Orders / Tracking </header> -->
                     <div class="card-body pb-5">
-                        <h5>Invoice Number: </h5>
+                        <h5 id="invoice-number">Invoice Number: </h5>
                         <article class="card">
                             <div class="card-body row">
                                 <div class="col black" id="box"> 
@@ -209,6 +209,8 @@
         var datas = JSON.parse('<%- data %>');
         var address = JSON.parse('<%- adress %>');
 
+        document.getElementById('invoice-number').innerHTML = `Invoice Number: ${address.invoice_number}`;
+        
     document.getElementById('receiver-address').innerHTML = `<strong>Receiver Address:</strong> <br>
         ${address.receiver_name} ${address.receiver_address}, ${address.receiver_city_name}, ${address.receiver_state}, 
         ${address.receiver_district}, ${address.receiver_zip_code}, ${address.receiver_country}`;
