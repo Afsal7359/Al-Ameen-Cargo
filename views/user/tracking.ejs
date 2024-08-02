@@ -77,7 +77,7 @@
 ============================================= -->
 
     <section id="ft-breadcrumb" class="ft-breadcrumb-section position-relative">
-        <div class="info">
+        <!-- <div class="info">
             <div class="row table-responsive">
                <table class="table table-success table-striped">
                 <thead>
@@ -98,9 +98,39 @@
                 </tbody>
                </table>
             </div>
+            </div> -->
+         
+            <div class="containers">
+                <article class="card">
+                    <!-- <header class="card-header"> My Orders / Tracking </header> -->
+                    <div class="card-body pb-5">
+                        <h5>Invoice Number: </h5>
+                        <article class="card">
+                            <div class="card-body row">
+                                <div class="col black" id="box"> 
+                                    <!-- Data will be inserted here -->
+                                </div>
+                                <div class="col black" id="location"> 
+                                    <!-- Data will be inserted here -->
+                                </div>
+                               
+                                <div class="col black" id="receiver-address"> 
+                                    <!-- Data will be inserted here -->
+                                </div>
+                                <div class="col black" id="comment"> 
+                                    <!-- Data will be inserted here -->
+                                </div>
+                            </div>
+                        </article>
+                       <div id="tracker">
+
+                       </div>
+                       
+                       
+                    </div>
+                </article>
             </div>
-            </div>
-        <div id="tracking-container"></div>
+        <!-- <div id="tracking-container"></div> -->
     
     </section>
    
@@ -178,52 +208,23 @@
     <script>
         var datas = JSON.parse('<%- data %>');
         var address = JSON.parse('<%- adress %>');
-        console.log(address.receiver_boxes ,"address");
-        function populateTable() {
-        const tbody = document.querySelector('.table tbody');
-        tbody.innerHTML = ''; // Clear any existing rows
 
+    document.getElementById('receiver-address').innerHTML = `<strong>Receiver Address:</strong> <br>
+        ${address.receiver_name} ${address.receiver_address}, ${address.receiver_city_name}, ${address.receiver_state}, 
+        ${address.receiver_district}, ${address.receiver_zip_code}, ${address.receiver_country}`;
+
+    document.getElementById('location').innerHTML = `<strong>Location:</strong> <br>
+        ${address.receiver_city_name}, ${address.receiver_state}, ${address.receiver_country}, ${address.receiver_zip_code}`;
+
+    document.getElementById('box').innerHTML = `<strong>Box:</strong> <br> ${address.receiver_boxes}`;
+
+    document.getElementById('comment').innerHTML = `<strong>Comment:</strong> <br> ${address.receiver_comment}`;
+
+        console.log(address ,datas,"address");
        
-            const tr = document.createElement('tr');
-
-            const invoiceTd = document.createElement('td');
-            invoiceTd.style.width = '190px';
-            invoiceTd.style.fontSize = 'medium';
-            invoiceTd.textContent = address.invoice_number;  // Use the appropriate property name from your data
-
-            const addressTd = document.createElement('td');
-            addressTd.style.width = '190px';
-            addressTd.style.fontSize = 'medium';
-            addressTd.innerHTML = `
-                ${address.receiver_name}
-                ${address.receiver_address}
-                ${address.receiver_city_name}
-                ${address.receiver_state}
-                ${address.receiver_district}
-                ${address.receiver_zip_code}
-                ${address.receiver_country}
-            `; 
-
-            const boxTd = document.createElement('td');
-            boxTd.style.width = '190px';
-            boxTd.style.fontSize = 'medium';
-            boxTd.textContent = address.receiver_boxes; // Use the appropriate property name from your data
-
-            const commentTd = document.createElement('td');
-            commentTd.style.width = '190px';
-            commentTd.style.fontSize = 'medium';
-            commentTd.textContent = address.receiver_comment; // Use the appropriate property name from your data
-
-            tr.appendChild(invoiceTd);
-            tr.appendChild(addressTd);
-            tr.appendChild(boxTd);
-            tr.appendChild(commentTd);
-
-            tbody.appendChild(tr);
-        }
-    
 
         const statusOrder = [
+            "Enquiry collected",
             "Shipment booked",
             "Shipment received",
             "Shipment forwarded",
@@ -242,8 +243,7 @@
     
         async function fetchStatus() {
             try {
-                populateTable()
-                const trackingContainer = document.getElementById('tracking-container');
+                const trackingContainer = document.getElementById('tracker');
                 trackingContainer.innerHTML = ''; // Clear previous tracking cards
     
                 datas.forEach((order, index) => {
@@ -286,38 +286,29 @@
     
                 if (isStatusVisible) {
                     const isCompleted = statusIndex <= latestCompletedIndex;
-                    const statusClass = isCompleted ? 'completed' : 'pending';
+                    const statusClass = isCompleted ? 'step active' : 'step';
                     const matchingStatus = order.statuses.find(s => s.status.trim() === status);
     
                     statusHTML += `
-                        <div class="order-tracking ${statusClass}" id='${index}-${statusIndex + 1}'>
-                            <span class="is-complete"></span>
-                            <p>${status}<br><span>${matchingStatus ? matchingStatus.date : ''}</span><br><span class="comment-text">${matchingStatus && matchingStatus.comment ? matchingStatus.comment : ""}</span></p>
-                        </div>`;
+                          <div class="${statusClass}">
+            <span class="icon"> <i class="fa ${isCompleted ? 'fa-check' : 'fa-box'}"></i> </span>
+            <span class="text">${status}</span>
+            <span class="text">${matchingStatus ? matchingStatus.date : ''}</span>
+            <span class="text">${matchingStatus && matchingStatus.comment ? matchingStatus.comment : ''}</span>
+          </div>`;
                 }
             });
     
             const firstStatusDate = Array.isArray(order.statuses) ? order.statuses[0].date : order.date;
     
             card.innerHTML = `
-                <div class="info">
-                    <div class="row">
-                        <div class="tracking">
-                            <div class="title">Tracking Order</div>
-                        </div>
-                        <div class="col-6">
-                            <span id="heading" style="color:#000">Date</span><br>
-                            <span id="details" style="color:#000">${firstStatusDate}</span>
-                        </div>
-                        <div class="col-6 mb-5 pull-right">
-                            <span id="heading" style="color:#000">Box No.</span><br>
-                            <span id="details" style="color:#000">${order.box_names}</span>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mx-5">
-                        ${statusHTML}
-                    </div>
-                </div>
+                
+                     
+                        <h6>Box Number: ${order.box_names}</h6>
+                        <div class="track p-5">
+                     ${statusHTML}
+                      </div>
+                       
             `;
     
             return card;
@@ -338,14 +329,6 @@
     
     
     
-Shipment booked
-Shipment received
-Shipment forwarded
-Shipment arrived
-Waiting for clearance / Shipment on hold
-Shipment cleared
-Out for Delivery / Pending
-Delivery arranged / Not Delivered
 
 
     
