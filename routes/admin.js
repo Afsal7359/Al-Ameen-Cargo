@@ -26,6 +26,8 @@ router.get('/contact',adminauth.adminauth, Contactcontroller.RenderContactAdminP
 router.post('/Addcontact', Contactcontroller.AddContact);
 router.get('/delete-contact/:id',adminauth.adminauth, Contactcontroller.DeleteContact);
 
+router.post('/booking',Contactcontroller.ShipmentBooking);
+
 
 
 module.exports = router;

@@ -26,7 +26,7 @@
 								</ul>
 							</nav>
 							<div class="ft-header-cta-btn">
-								<a class="d-flex justify-content-center align-items-center" href="/contact">Get A Quote</a>
+								<a class="d-flex justify-content-center align-items-center" data-bs-target="#modaldemo1" data-bs-toggle="modal">Book a Shipment</a>
 							</div>
 						</div>
 					</div>
@@ -50,6 +50,7 @@
                                         <li><a href="/service">Services</a></li>
                                         <li><a href="/blog">News & Blogs</a></li>
                                         <li><a href="/contact">Contact</a></li>
+										<li class="ft-header-cta-btn"><a  data-bs-target="#modaldemo1" data-bs-toggle="modal">Book a Shipment</a></li>	
 										
 										
 									</ul>
@@ -73,7 +74,87 @@
 	</header>
 <!-- End of header section
 	============================================= -->
-   
+  
+ <div id="modaldemo1" class="modal fade">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form action="admin//booking" method="POST"  >
+			<div class="modal-body">
+				<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+					<!-- <span aria-hidden="true">&times;</span> -->
+				</button>
+			   <i><p style="color: red;">To assist you efficiently, please provide the following details:</p></i>
+			   <div class="form-group mb-3">
+				<select name="typeOfPerson" id="" class="form-control select">
+					<option value="">Select Type of Shipment </option>
+					<option value="Person">Person</option>
+					<option value="Trade">Trade</option>
+				</select>
+				</div>
+
+				<i><p style="color: blue;" class="mt-5">Sender Details</p></i>
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" placeholder="name" name="SenderName"  required>
+				</div>
+				<div class="form-group mb-3">
+					<input type="number" class="form-control" placeholder="number" name="SenderNumber"  required>
+				</div>
+				<div class="form-group mb-3">
+					<input type="email" class="form-control" placeholder="email" name="SenderEmail"  >
+				</div>
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" placeholder="address" name="SenderAddress"  required>
+				</div>
+
+				
+				<i><p style="color: blue;" class="mt-5">Reciever Details</p></i>
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" placeholder="name" name="ReceiverName"  required>
+				</div>
+				<div class="form-group mb-3">
+					<input type="number" class="form-control" placeholder="number" name="ReceiverNumber"  required>
+				</div>
+				<div class="form-group mb-3">
+					<input type="email" class="form-control" placeholder="email" name="ReceiverEmail"  >
+				</div>
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" placeholder="address" name="ReceiverAddress"  required>
+				</div>
+
+				<i><p style="color: blue;" class="mt-5">Box Details</p></i>
+				<!-- <div id="input-container">
+					<div class="form-row mb-3">
+						<input type="text" class="form-control" placeholder="Box weight (in KG)" name="BoxWeight[]">
+						<input type="text" class="form-control" placeholder="Box dimensions (L x W x H in cms)" name="BoxDimensions[]">
+						<input type="text" class="form-control" placeholder="Box packing list (describe the contents of the package)" name="BoxPackingList[]">
+						<button type="button" class="btn btn-primary add-row">Add Box</button>
+					</div>
+				</div> -->
+				<div class="form-group">
+					<div id="inputContainer">
+					<div class="form-group">
+						<input type="text" placeholder="weight (in KG)" class="form-control mt-2" name="BoxWeight" required autocomplete="off">
+						<input type="text" placeholder="dimensions (L x W x H in cms)" class="form-control mt-2" name="BoxDimensions" required autocomplete="off">
+						<input type="text" placeholder="packing list (describe the contents of the package)" class="form-control mt-2" name="BoxPackingList" required autocomplete="off">
+						<div class="input-group-append">
+						  <button type="button" class="btns btn-success" onclick="addInputField()">Add</button>
+						  <button type="button" class="btns btn-danger" onclick="deleteInputField(this)">Delete</button>
+						</div>
+					  </div>
+					  </div>
+				</div>
+				<div class="form-group mb-3 mt-4">
+					<input type="text" class="form-control" placeholder="total value of goods" name="valueOfGoods" >
+				</div>
+				<div class="form-group mt-5">
+					<input type="submit" class="form-control btn btn-primary btn-block" >
+				</div>
+				<!-- <button class=" " type="submit">Submit</button> -->
+			</div>
+		</form><!-- modal-body -->
+		</div><!-- modal-content -->
+	</div><!-- modal-dialog -->
+</div><!--Add modal close -->		
 <!-- Start of Slider section
 	============================================= -->
 	
@@ -90,12 +171,12 @@
 		<img src="assets/images/new/banner1.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/gallery/poster1.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
 		  <h1 class="htag" style="color: #000; animation: fadeInUp 1s ease-in-out both;" >Reliable Cargo<br>Solutions</h1>
 		  <p style="color: #000; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">Experience with our trusted and efficient cargo services.<br>Goods reach their destination safely and on time.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
     <!-- Slide 2 -->
 	<div class="swiper-slide" style="position: relative;">
@@ -103,12 +184,12 @@
 		<img src="assets/images/new/banner4.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/gallery/poster2.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
 		  <h1 class="htag" style="color: #fff; animation: fadeInUp 1s ease-in-out both;" >Reliable Cargo<br>Solutions</h1>
 		  <p style="color: #fff; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">Experience with our trusted and efficient cargo services.<br>Goods reach their destination safely and on time.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
     <!-- Slide 2 -->
 	<div class="swiper-slide" style="position: relative;">
@@ -116,12 +197,12 @@
 		<img src="assets/images/new/banner2.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/gallery/poster3.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
 		  <h1 class="htag" style="color: #fff; animation: fadeInUp 1s ease-in-out both;" >Reliable Cargo<br>Solutions</h1>
 		  <p style="color: #fff; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">Experience with our trusted and efficient cargo services.<br>Goods reach their destination safely and on time.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
     <!-- Slide 2 -->
 	<div class="swiper-slide" style="position: relative;">
@@ -129,12 +210,12 @@
 		<img src="assets/images/new/banner1.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/gallery/poster4.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
 		  <h1 class="htag" style="color: #fff; animation: fadeInUp 1s ease-in-out both;" >Reliable Cargo<br>Solutions</h1>
 		  <p style="color: #fff; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">Experience with our trusted and efficient cargo services.<br>Goods reach their destination safely and on time.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
     <!-- Slide 2 -->
     <!-- Slide 1 -->
@@ -143,12 +224,12 @@
 		<img src="assets/images/new/banner1.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/new/mobbanner1.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 50;">
 		  <h1 class="htag" style="color: #fff; animation: fadeInUp 1s ease-in-out both;" >Reliable Cargo<br>Solutions</h1>
 		  <p style="color: #fff; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">Experience with our trusted and efficient cargo services.<br>Goods reach their destination safely and on time.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
     <!-- Slide 2 -->
     <div class="swiper-slide" style="position: relative;">
@@ -156,12 +237,12 @@
 		<img src="assets/images/new/banner2.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/new/mobbanner2.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 10;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 10;">
 		  <h1 class="htag" style="color: #fff; animation: fadeInUp 1s ease-in-out both;" >Global Cargo<br>Excellence</h1>
 		  <p style="color: #fff; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">Connecting the world through reliable and fast cargo solutions.<br>Your logistics partner for safe and timely deliveries worldwide.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
     <!-- Slide 3 -->
     <div class="swiper-slide" style="position: relative;">
@@ -169,12 +250,12 @@
 		<img src="assets/images/new/banner4.jpg" class="desktop-image" alt="Image" style="width: 100%; height: 100%;">
 		<!-- Mobile image -->
 		<img src="assets/images/new/mobbanner3.jpg" class="mobile-image" alt="Image" style="width: 100%; height: 100%;">
-		<div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 10;">
+		<!-- <div class="swiper-slide-content main" style="position: absolute; top: 30%; right: 10%; z-index: 10;">
 		  <h1 class="htag" style="color: #fff; animation: fadeInUp 1s ease-in-out both;" >Your Trusted <br>Cargo Partner</h1>
 		  <p style="color: #fff; animation: fadeInUp 1.5s ease-in-out both; font-size: 18px; max-width: 600px;">From local deliveries to international shipping, we provide <br>comprehensive cargo services tailored to your needs.</p>
 		  <a href="about.html" class="btn" style="animation: fadeInUp 2s ease-in-out both;">About Us</a>
 		  <a href="/service" class="btn" style="animation: fadeInUp 2.5s ease-in-out both;">Our Service</a>
-		</div>
+		</div> -->
 	  </div>
   </div>
   <!-- Add Pagination -->
@@ -392,62 +473,7 @@
 <!-- End of Service section
 	============================================= -->	
 
-<!-- Start of counterup section
-	============================================= -->
-	<section id="ft-counterup" class="ft-counterup-section position-relative">
-		<div class="container">
-			<div class="ft-counterup-content">
-				<div class="row">
-					<div class="col-lg-3 col-md-6">
-						<div class="ft-counterup-innerbox d-flex align-items-center position-relative">
-							<div class="ft-counterup-icon d-flex align-items-center justify-content-center">
-								<i class="flaticon-delivery-truck"></i>
-							</div>
-							<div class="ft-counterup-text headline pera-content">
-								<h3><span class="counter">25</span>k</h3>
-								<p>Parcel Delivered</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="ft-counterup-innerbox d-flex align-items-center position-relative">
-							<div class="ft-counterup-icon d-flex align-items-center justify-content-center">
-								<i class="flaticon-office"></i>
-							</div>
-							<div class="ft-counterup-text headline pera-content">
-								<h3><span class="counter">300</span>+</h3>
-								<p>Total Branch</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="ft-counterup-innerbox d-flex align-items-center position-relative">
-							<div class="ft-counterup-icon d-flex align-items-center justify-content-center">
-								<i class="flaticon-community"></i>
-							</div>
-							<div class="ft-counterup-text headline pera-content">
-								<h3><span class="counter">500</span>k</h3>
-								<p>Satisfied Clients</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="ft-counterup-innerbox d-flex align-items-center position-relative">
-							<div class="ft-counterup-icon d-flex align-items-center justify-content-center">
-								<i class="flaticon-free-shipping"></i>
-							</div>
-							<div class="ft-counterup-text headline pera-content">
-								<h3><span class="counter">5</span>M</h3>
-								<p>Delivered Packages</p>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</div>
-		</div>
-	</section>
-<!-- End of counterup section
-	============================================= -->
+
 
 <!-- Start of why choose section
 	============================================= -->
@@ -589,120 +615,6 @@
 <!-- End of Project section
 	============================================= -->
 
-<!-- Start of Testimonial section
-	============================================= -->
-	<section id="ft-testimonial" class="ft-testimonial-section position-relative">
-		<span class="ft-testimonial-map text-center position-absolute"><img src="assets/img/shape/map.png" alt=""></span>
-		<div class="container">
-			<div class="ft-section-title headline pera-content text-center">
-				<span class="sub-title">Testimonial</span>
-				<h2>What People and Clients
-					Think About Us?
-				</h2>
-			</div>
-			<div class="ft-testimonial-slider-wrapper">
-				<div class="ft-testimonial-slider-area">
-					<div class="ft-item-innerbox wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-						<div class="ft-testimonial-item-innerbox">
-							<div class="ft-testimonial-item-img-wrapper position-relative">
-								<div class="ft-testimonial-item-img">
-									<img src="assets/img/testimonial/tst1.jpg" alt="">
-								</div>
-								<div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
-									<img src="assets/img/shape/quote.png" alt="">
-								</div>
-							</div>
-							<div class="ft-testimonial-text-item text-center">
-								Lorem ipsum dolor sit amet, consectetur gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-							</div>
-							<div class="ft-testimonial-name headline position-relative">
-								<span class="ft-testimonial-shape"></span>
-								<h3>John Doe</h3>
-							</div>
-						</div>
-					</div>
-					<div class="ft-item-innerbox wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-						<div class="ft-testimonial-item-innerbox">
-							<div class="ft-testimonial-item-img-wrapper position-relative">
-								<div class="ft-testimonial-item-img">
-									<img src="assets/img/testimonial/tst2.jpg" alt="">
-								</div>
-								<div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
-									<img src="assets/img/shape/quote.png" alt="">
-								</div>
-							</div>
-							<div class="ft-testimonial-text-item text-center">
-								Lorem ipsum dolor sit amet, consectetur gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-							</div>
-							<div class="ft-testimonial-name headline position-relative">
-								<span class="ft-testimonial-shape"></span>
-								<h3>John Doe</h3>
-							</div>
-						</div>
-					</div>
-					<div class="ft-item-innerbox wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-						<div class="ft-testimonial-item-innerbox">
-							<div class="ft-testimonial-item-img-wrapper position-relative">
-								<div class="ft-testimonial-item-img">
-									<img src="assets/img/testimonial/tst1.jpg" alt="">
-								</div>
-								<div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
-									<img src="assets/img/shape/quote.png" alt="">
-								</div>
-							</div>
-							<div class="ft-testimonial-text-item text-center">
-								Lorem ipsum dolor sit amet, consectetur gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-							</div>
-							<div class="ft-testimonial-name headline position-relative">
-								<span class="ft-testimonial-shape"></span>
-								<h3>John Doe</h3>
-							</div>
-						</div>
-					</div>
-					<div class="ft-item-innerbox">
-						<div class="ft-testimonial-item-innerbox">
-							<div class="ft-testimonial-item-img-wrapper position-relative">
-								<div class="ft-testimonial-item-img">
-									<img src="assets/img/testimonial/tst2.jpg" alt="">
-								</div>
-								<div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
-									<img src="assets/img/shape/quote.png" alt="">
-								</div>
-							</div>
-							<div class="ft-testimonial-text-item text-center">
-								Lorem ipsum dolor sit amet, consectetur gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-							</div>
-							<div class="ft-testimonial-name headline position-relative">
-								<span class="ft-testimonial-shape"></span>
-								<h3>John Doe</h3>
-							</div>
-						</div>
-					</div>
-					<div class="ft-item-innerbox">
-						<div class="ft-testimonial-item-innerbox">
-							<div class="ft-testimonial-item-img-wrapper position-relative">
-								<div class="ft-testimonial-item-img">
-									<img src="assets/img/testimonial/tst1.jpg" alt="">
-								</div>
-								<div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
-									<img src="assets/img/shape/quote.png" alt="">
-								</div>
-							</div>
-							<div class="ft-testimonial-text-item text-center">
-								Lorem ipsum dolor sit amet, consectetur gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-							</div>
-							<div class="ft-testimonial-name headline position-relative">
-								<span class="ft-testimonial-shape"></span>
-								<h3>John Doe</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>				
-<!-- End of Testimonial section
-	============================================= -->
 
 <!-- Start of Contact section
 	============================================= -->
@@ -863,13 +775,38 @@
 			</div>
 		</div>
 	</footer>
-<!-- End of Footer section
-	============================================= -->			
-	<script>
-        var message = "<%= message %>";
-        if (message && message.trim().length > 0) {
-            window.alert(message);
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+      function addInputField() {
+        const inputContainer = document.getElementById('inputContainer');
+        const newInputGroup = document.createElement('div');
+        newInputGroup.className = 'form-group';
+        newInputGroup.innerHTML = `
+          <input type="text" placeholder="weight (in KG)" class="form-control" name="BoxWeight" required autocomplete="off">
+		    <input type="text" placeholder="dimensions (L x W x H in cms)" class="form-control" name="BoxDimensions" required autocomplete="off">
+			  <input type="text" placeholder="packing list (describe the contents of the package)" class="form-control" name="BoxPackingList" required autocomplete="off">
+          <div class="input-group-append">
+            <button type="button" class="btns btn-success" onclick="addInputField()">Add</button>
+            <button type="button" class="btns btn-danger" onclick="deleteInputField(this)">Delete</button>
+          </div>
+        `;
+        inputContainer.appendChild(newInputGroup);
+      }
+    
+	  function deleteInputField(button) {
+        const inputGroup = button.parentElement.parentElement;
+        const inputContainer = document.getElementById('inputContainer');
+        if (inputContainer.children.length > 1) {
+          inputContainer.removeChild(inputGroup);
+        } else {
+          alert("At least one input field is required.");
         }
+      }
 
-
-    </script>
+      window.addInputField = addInputField;
+      window.deleteInputField = deleteInputField;
+    }); </script>
+    
+	
+	

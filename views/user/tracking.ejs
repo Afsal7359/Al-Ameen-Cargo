@@ -259,63 +259,65 @@
         }
     
         function createTrackingCard(order, index) {
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.id = `tracking${index}`;
-    
-            const completedStatuses = order.statuses.map(status => status.status.trim());
-            let latestCompletedIndex = -1;
-    
-            // Determine the index of the latest completed status
-            completedStatuses.forEach(status => {
-                const currentIndex = statusOrder.indexOf(status);
-                if (currentIndex > latestCompletedIndex) {
-                    latestCompletedIndex = currentIndex;
-                }
-            });
-    
-            let statusHTML = '';
-            statusOrder.forEach((status, statusIndex) => {
-                let isStatusVisible = true;
-    
-                // Check if we should display primary or secondary from conditional pairs
-                for (const { primary, secondary } of conditionalStatuses) {
-                    if (status === primary && completedStatuses.includes(secondary)) {
-                        isStatusVisible = false;
-                        break;
-                    }
-                }
-    
-                if (isStatusVisible) {
-                    const isCompleted = statusIndex <= latestCompletedIndex;
-                    const statusClass = isCompleted ? 'step active' : 'step';
-                    const matchingStatus = order.statuses.find(s => s.status.trim() === status);
-    
-                    statusHTML += `
-                          <div class="${statusClass}">
-            <span class="icon"> <i class="fas ${isCompleted ? 'fa-check' : 'fa-box-open'}"></i> </span>
-            <span class="text">${status}</span>
-            <span class="text">${matchingStatus ? matchingStatus.date : ''}</span>
-            <span class="text">${matchingStatus && matchingStatus.comment ? matchingStatus.comment : ''}</span>
-          </div>`;
-                }
-            });
-    
-            const firstStatusDate = Array.isArray(order.statuses) ? order.statuses[0].date : order.date;
-    
-            card.innerHTML = `
-                
-                     
-                        <h6>Box Number: ${order.box_names}</h6>
-                        <div class="track p-5">
-                     ${statusHTML}
-                      </div>
-                       
-            `;
-    
-            return card;
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.id = `tracking${index}`;
+
+    const completedStatuses = order.statuses.map(status => status.status.trim());
+    let latestCompletedIndex = -1;
+    let deliveryArrangedDate = '';
+
+    // Determine the index of the latest completed status
+    completedStatuses.forEach(status => {
+        const currentIndex = statusOrder.indexOf(status);
+        if (currentIndex > latestCompletedIndex) {
+            latestCompletedIndex = currentIndex;
         }
+    });
+
+    let statusHTML = '';
+    statusOrder.forEach((status, statusIndex) => {
+        let isStatusVisible = true;
+
+        // Check if we should display primary or secondary from conditional pairs
+        for (const { primary, secondary } of conditionalStatuses) {
+            if (status === primary && completedStatuses.includes(secondary)) {
+                isStatusVisible = false;
+                break;
+            }
+        }
+
+        // Check if "Delivery arranged" should be replaced with "Delivered"
+        if (status === "Delivery arranged" && completedStatuses.includes("Delivery arranged")) {
+            status = "Delivered";
+            deliveryArrangedDate = order.statuses.find(s => s.status.trim() === "Delivery arranged").date;
+        }
+
+        if (isStatusVisible) {
+            const isCompleted = statusIndex <= latestCompletedIndex;
+            const statusClass = isCompleted ? 'step active' : 'step';
+            const matchingStatus = order.statuses.find(s => s.status.trim() === status);
+
+            statusHTML += `
+                <div class="${statusClass}">
+                    <span class="icon"><i class="fas ${isCompleted ? 'fa-check' : 'fa-box-open'}"></i></span>
+                    <span class="text">${status}</span>
+                    <span class="text">${status === "Delivered" ? deliveryArrangedDate : (matchingStatus ? matchingStatus.date : '')}</span>
+                    <span class="text">${matchingStatus && matchingStatus.comment ? matchingStatus.comment : ''}</span>
+                </div>`;
+        }
+    });
+
+    const firstStatusDate = Array.isArray(order.statuses) ? order.statuses[0].date : order.date;
+
+    card.innerHTML = `
+        <h6>Box Number: ${order.box_names}</h6>
+        <div class="track p-5">
+            ${statusHTML}
+        </div>`;
     
+    return card;
+}
         // Fetch the status when the page loads
         window.onload = () => fetchStatus();
     </script>

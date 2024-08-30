@@ -382,6 +382,15 @@ p {
     margin: 10px 0;
     display: inline-block;
   }
+  .btns {
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    margin: 10px 0;
+    display: inline-block;
+  }
 
   /* Hover effect for the button */
   .btn:hover {
